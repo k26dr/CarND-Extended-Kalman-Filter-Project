@@ -26,14 +26,14 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
   //accumulate squared residuals
   VectorXd residual_sum(4);
   residual_sum << 0,0,0,0;
-  for(int i=0; i < estimations.size(); ++i){
+  for(int i=0; i < estimations.size(); ++i) {
 	  VectorXd diff = ground_truth[i] - estimations[i];
 	  residual_sum += diff.cwiseProduct(diff);
   }
 
   //calculate the mean
   VectorXd mean(4);
-  mean = 1.0/estimations.size() * residual_sum;
+  mean = 1.0 / estimations.size() * residual_sum;
 
   //calculate the squared root
   rmse = mean.cwiseSqrt();
